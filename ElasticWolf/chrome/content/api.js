@@ -960,7 +960,7 @@ var ew_api = {
 
         // Collected result will be returned by the last call only
         var marker = getNodeValue(xmlDoc, "Marker");
-        var nextToken = getNodeValue(xmlDoc, "NextToken");
+        var nextToken = getNodeValue(xmlDoc, "nextToken");
 
         log('getNext: ' + model + ", token=" + (marker || nextToken) + ", rc=" + this.cache[model].length);
 
@@ -970,7 +970,7 @@ var ew_api = {
             if (nextToken) setParam(params, "NextToken", nextToken);
             response.skipCallback = true;
 
-            // In sync mode keep spinning until we collect evrything
+            // In sync mode keep spinning until we collect everything
             if (response.isSync) {
                 return method.call(me, response.action, params, me, true, response.method, response.callback);
             }
@@ -1941,7 +1941,7 @@ var ew_api = {
             });
             list.push(obj);
         }
-        return this.getNext(response, this.QueryEC2, list);
+        return this.getNext(response, this.queryEC2, list);
     },
 
     createInstanceExportTask: function(id, targetEnv, bucket, descr, prefix, diskFormat, containerFormat, callback)
